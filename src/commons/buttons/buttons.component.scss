@@ -1,0 +1,46 @@
+/*Todo el estilo del componente de tipo button va aquí*/
+.btn-cancel{
+	display: inline-block;
+	width: 130px;
+	height: 30px;
+	color: #707070;
+	border-color: #9e9e9e;
+	background-color: #fff;
+	border-radius: 30px;
+	text-align: center;
+	font-size: 100%;
+	font-weight: 700;
+	line-height: 1;
+	padding: 0.25em 0.4em;
+}
+.btn-delete{
+	display: inline-block;
+	border: none;
+	width: 130px;
+	height: 30px;
+	font-weight: bold;
+	color: #fff;
+	background-color: #ff3d00;
+	border-radius: 30px;
+	text-align: center;
+	font-size: 100%;
+	font-weight: 700;
+	line-height: 1;
+	padding: 0.25em 0.4em;
+}
+.btn-success{
+	display: inline-block;
+	border: none;
+	width: 130px;
+	height: 30px;
+	font-weight: bold;
+	color: #fff;
+	background-color: #32cb00;
+	border-radius: 30px;
+	text-align: center;
+	font-size: 100%;
+	font-weight: 700;
+	line-height: 1;
+	padding: 0.25em 0.4em;
+}
+
