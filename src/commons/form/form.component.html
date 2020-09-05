@@ -1,1 +1,35 @@
-<p>form works!</p>
+<form [formGroup]="contactForm" ngSubmit="onSubmit()" novalidate>
+  <div formGroupName="personalData" novalidate>
+
+      <input formControlName="id" />
+
+      <label>Nombre</label>
+      <input formControlName="correo"/>
+
+      <label>Correo</label>
+      <input formControlName="correo"/>
+  </div>
+
+      <select formControlName="idMunicipio">
+        <option *ngFor="let idMunicipio of municipios" [value]="idMunicipio">{{idMunicipio}}</option>
+      </select>
+
+      <select formControlName="idEstado">
+        <option *ngFor="let idEstado of estados" [value]="idEstado">{{idEstado}}</option>
+      </select>
+
+      <label>Código postal</label>
+      <input formControlName="cp"/>
+
+      <select formControlName="requestType">
+        <option *ngFor="let requestType of requestTypes" [value]="requestType">{{requestType}}</option>
+      </select>
+
+      <label>Mensaje</label>
+      <textarea formControlName="mensaje"></textarea>
+      <button type="submit" [disabled]="contactForm.pristine">Save</button>
+      <button type="reset" (click)="revert()" [disabled]="contactForm.pristine">
+        Revert
+      </button>
+
+</form>
