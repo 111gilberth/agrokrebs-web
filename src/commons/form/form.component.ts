@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormControlDirective } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-form',
@@ -8,31 +8,50 @@ import { FormControl, FormGroup, FormControlDirective } from '@angular/forms'
 })
 export class FormComponent implements OnInit {
   contactForm: FormGroup
-  estados = []
+  submitted = false;
+  municipios = ['Acajete','Acatlán','Acayucan','Actopan','Acula','Acultzingo','Camarón de Tejeda','Alpatláhuac','Alto Lucero de Gutiérrez Barrios','Altotonga','Alvarado','Amatitlán',
+  'Naranjos Amatlán','Amatlán de los Reyes','Angel R. Cabada','La Antigua','Apazapan','Aquila','Astacinga','Atlahuilco','Atoyac','Atzacan','Atzalan','Tlaltetela','Ayahualulco',
+  'Banderilla','Benito Juárez','Boca del Río','Calcahualco','Camerino Z. Mendoza','Carrillo Puerto','Catemaco','Cazones de Herrera','Cerro Azul','Citlaltépetl','Coacoatzintla','Coahuitlán',
+  'Coatepec','Coatzacoalcos','Coatzintla','Coetzala','Colipa','Comapa','Córdoba','Cosamaloapan de Carpio','Cosautlán de Carvajal','Coscomatepec','Cosoleacaque','Cotaxtla','Coxquihui','Coyutla',
+  'Cuichapa','Cuitláhuac','Chacaltianguis','Chalma','Chiconamel','Chiconquiaco','Chicontepec','Chinameca','Chinameca','Chinampa de Gorostiza','Las Choapas','Chocamán','Chontla',
+  'Chumatlán','Emiliano Zapata','Espinal','Filomeno Mata','Fortín','Gutiérrez Zamora','Hidalgotitlán','Huatusco','Huayacocotla','Hueyapan de Ocampo','Huiloapan de Cuauhtémoc','Ignacio de la Llave',
+  'Ilamatlán','Isla','Ixcatepec','Ixhuacán de los Reyes','Ixhuatlán del Café','Ixhuatlancillo','Ixhuatlán del Sureste','Ixhuatlán de Madero','Ixmatlahuacan','Ixtaczoquitlán','Jalacingo',
+  'Xalapa','Jalcomulco','Jáltipan','Jamapa','Jesús Carranza','Xico','Jilotepec','Juan Rodríguez Clara','Juchique de Ferrer','Landero y Coss','Lerdo de Tejada','Magdalena','Maltrata']
   requestTypes = ['Claim', 'Feedback', 'Help Request']
-  municipios = []
+  estados = ['Aguascalientes','Baja California','Baja California Sur','Campeche','Coahuila de Zaragoza','Colima','Chiapas','Chihuahua','Distrito Federal','Durango','Guanajuato','Hidalgo',
+  'Jalisco','México','Michoacán de Ocampo','Morelos','Nayarit','Nuevo León','Manlio Fabio Altamirano','Oaxaca','Puebla','Querétaro','Quintana Roo','San Luis Potosí','Sinaloa','Sonora',
+  'Tabasco','Tamaulipas','Tlaxcala','Veracruz de Ignacio de la Llave','Yucatán','Zacatecas']
 
-  constructor() {
-    this.contactForm = this.createContactFormGroup()
-   }
+  constructor( private formBuilder: FormBuilder ) {}
 
-   createContactFormGroup(){
-     return new FormGroup({
-            personalData: new FormGroup({
-                id: new FormControl(),
-                nombre: new FormControl(),
-                correo: new FormControl(),
-                idMunicipio: new FormControl(),
-                idEstado: new FormControl(),
-                cp: new FormControl()
-            }),
-              requestType: new FormControl(),
-              mensaje: new FormControl(),
-     })
+   public ngOnInit(): void {
+        this.contactForm = this.formBuilder.group({
+            //id: ['', Validators.required],
+            nombre: ['', [Validators.required, Validators.minLength(4)]],
+            correo: ['', [Validators.required, Validators.email]],
+            idMunicipio: ['', Validators.required],
+            idEstado: ['', Validators.required],
+            cp: ['', Validators.required],
+            requestType: ['', Validators.required],
+            mensaje: ['', [Validators.required,Validators.minLength(10)]]
+        });
+    }
+    // convenience getter for easy access to form fields
+    get f() { return this.contactForm.controls; }
 
-   }
-
-  ngOnInit(): void {
+   // Submit Registration Form
+     onSubmit() {
+        this.submitted = true;
+        if(this.contactForm.invalid){
+          return;
+        }
+        console.log(JSON.stringify(this.contactForm.value));
+        //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.contactForm.value));
   }
+
+      onReset(){
+        this.submitted = false;
+        this.contactForm.reset();
+    }
 
 }
