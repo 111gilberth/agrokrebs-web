@@ -7,57 +7,65 @@
 
       <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 
-
-
             <!--<input formControlName="id" class="form-control" type="hidden" />-->
 
-            <label class="col-sm-6 col-form-label">Nombre</label>
-            <input formControlName="nombre" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }"/>
+            <label class="col-sm-6 col-form-label"><h4>Nombre</h4></label>
+            <input formControlName="nombre" id="nombre" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }"/>
               <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
                 <div *ngIf="f.nombre.errors.required">Es requerido llenar el nombre</div>
               </div>
 
-            <label class="col-sm-6 col-form-label">Correo</label>
-            <input formControlName="correo" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.correo.errors }"/>
+            <label class="col-sm-6 col-form-label"><h4>Correo</h4></label>
+            <input formControlName="correo" id="correo" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.correo.errors }"/>
               <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
                 <div *ngIf="f.correo.errors.required">Es requerido llenar el correo</div>
               </div>
 
-            <label class="col-sm-6 col-form-label">Municipio</label>
-            <select formControlName="idMunicipio" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.idMunicipio.errors }">
+            <label class="col-sm-6 col-form-label"><h4>Municipio</h4></label>
+            <select formControlName="idMunicipio" id="idMunicipio" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.idMunicipio.errors }">
               <option *ngFor="let idMunicipio of municipios" [value]="idMunicipio"  selected>{{idMunicipio}}</option>
             </select>
               <div *ngIf="submitted && f.idMunicipio.errors" class="invalid-feedback">
                 <div *ngIf="f.idMunicipio.errors.required">Es requerido llenar el Municipio</div>
               </div>
 
-            <label class="col-sm-6 col-form-label">Estado</label>
-            <select formControlName="idEstado" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.idEstado.errors }">
+            <label class="col-sm-6 col-form-label"><h4>Estado</h4></label>
+            <select formControlName="idEstado" class="form-control" id="idEstado" [ngClass]="{ 'is-invalid': submitted && f.idEstado.errors }">
               <option *ngFor="let idEstado of estados" [value]="idEstado"  selected>{{idEstado}}</option>
             </select>
               <div *ngIf="submitted && f.idEstado.errors" class="invalid-feedback">
                 <div *ngIf="f.idEstado.errors.required">Es requerido llenar el Estado</div>
               </div>
 
-            <label class="col-sm-6 col-form-label">Código postal</label>
-            <input formControlName="cp" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cp.errors }"/>
+            <label class="col-sm-6 col-form-label"><h4>Código postal</h4></label>
+            <input formControlName="cp" class="form-control" id="cp" [ngClass]="{ 'is-invalid': submitted && f.cp.errors }"/>
               <div *ngIf="submitted && f.cp.errors" class="invalid-feedback">
                 <div *ngIf="f.cp.errors.required">Es requerido llenar el Código postal</div>
               </div>
 
-            <label class="col-sm-6 col-form-label">Tipo de contacto</label>
-            <select formControlName="requestType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.requestType.errors }">
+            <label class="col-sm-6 col-form-label"><h4>Tipo de ayuda</h4></label>
+            <select formControlName="requestType" id="requestType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.requestType.errors }">
               <option *ngFor="let requestType of requestTypes" [value]="requestType" selected>{{requestType}}</option>
             </select>
               <div *ngIf="submitted && f.requestType.errors" class="invalid-feedback">
                 <div *ngIf="f.requestType.errors.required">Es requerido llenar el tipo de contacto</div>
               </div>
 
-            <label class="col-sm-2 col-form-label">Mensaje</label>
-            <textarea formControlName="mensaje" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mensaje.errors }"></textarea>
+            <label class="col-sm-2 col-form-label"><h4>Mensaje</h4></label>
+            <textarea formControlName="mensaje" id="mensaje" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mensaje.errors }"></textarea>
               <div *ngIf="submitted && f.mensaje.errors" class="invalid-feedback">
                 <div *ngIf="f.mensaje.errors.required">Es requerido llenar el Mensaje</div>
               </div>
+
+              <br />
+              <div class="form-check">
+                <input type="checkbox" formControlName="acceptTerms" class="form-check-input" id="acceptTerms"  [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }">
+                <label class="form-check-label" for="exampleCheck1">Acepta nuestros términos y condiciones.</label>
+                  <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">
+                    <div *ngIf="f.acceptTerms.errors.required">Necesitas aceptar los términos y condiciones.</div>
+                  </div>
+              </div>
+
             <br />
 
             <button type="submit" class="btn btn-primary" style="width:100%;width:100%">Enviar comentarios</button>

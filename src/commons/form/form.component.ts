@@ -33,7 +33,8 @@ export class FormComponent implements OnInit {
             idEstado: ['', Validators.required],
             cp: ['', Validators.required],
             requestType: ['', Validators.required],
-            mensaje: ['', [Validators.required,Validators.minLength(10)]]
+            mensaje: ['', [Validators.required,Validators.minLength(10)]],
+            acceptTerms: [false, Validators.requiredTrue]
         });
     }
     // convenience getter for easy access to form fields
