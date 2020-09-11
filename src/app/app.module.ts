@@ -14,6 +14,10 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
 import { AgrokrebsComponent } from './pages/agrokrebs/agrokrebs.component';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { VideosComponent } from './pages/videos/videos.component';
+import { FooterComponent } from '../commons/footer/footer.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -26,16 +30,20 @@ import { VideosComponent } from './pages/videos/videos.component';
     ContactoComponent,
     AgrokrebsComponent,
     ProductosComponent,
-    VideosComponent
+    VideosComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

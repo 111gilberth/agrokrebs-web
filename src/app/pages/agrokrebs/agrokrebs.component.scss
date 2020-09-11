@@ -1,0 +1,41 @@
+.teal {
+  background-color: #009688 !important;
+}
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto",sans-serif;
+  font-weight: 300;
+}
+
+.mt-md-0, .my-md-0 {
+    margin-top: 0 !important;
+}
+
+.col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.font-small {
+  font-size: .9rem;
+}
+footer.page-footer .footer-copyright {
+  overflow: hidden;
+  color: rgba(255,255,255,0.6);
+  background-color: rgba(0,0,0,0.2);
+}
+.text-center {
+  text-align: center !important;
+}
+.pb-3, .py-3 {
+  padding-bottom: 1rem !important;
+}
+footer.page-footer {
+  bottom: 0;
+  color: #fff;
+}
