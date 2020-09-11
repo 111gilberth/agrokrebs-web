@@ -16,7 +16,7 @@ export class FooterComponent implements OnInit {
   public ngOnInit(): void {
       switch(this.fooName){
             case "footerUno":{
-                this.footerStyle = "page-footer font-small special-color-dark pt-4"
+                this.footerStyle = "page-footer font-small special-color-dark pt-4page-footer font-small special-color-dark pt-4"
                 this.footerText = "container-fluid text-center text-md-left"
                 this.gridRow = "row"
               break;
