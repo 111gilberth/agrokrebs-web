@@ -18,6 +18,7 @@ import { FooterComponent } from '../commons/footer/footer.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ModalVideoComponent } from '../commons/modal-video/modal-video.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
     AgrokrebsComponent,
     ProductosComponent,
     VideosComponent,
-    FooterComponent
+    FooterComponent,
+    ModalVideoComponent
   ],
   imports: [
     BrowserModule,
