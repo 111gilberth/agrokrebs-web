@@ -1,0 +1,75 @@
+<!-- Section: Contact v.1 -->
+<section class="my-5">
+
+  <!-- Section heading -->
+  <h2 class="h1-responsive  text-center my-5 font-body">Credito con Agro Krebs</h2>
+  <!-- Section description -->
+  <h3 class="font-body text-center w-responsive mx-auto pb-5">Solicita tu línea de crédito con Agro Krebs por un monto de: ¡Hasta por
+    $500,000.00 y un plazo máximo de hasta 60 días!! Postuláte con el envio de los siguientes papeles y llena el formulario.</h3>
+
+  <!-- Grid row -->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-lg-5 mb-lg-0 mb-4">
+
+      <!-- Form with header -->
+      <div>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="text-center" style="color: #757575;">
+          <div class="wrap-input100 validate-input" data-validate="Please enter your name" style="max-width: 750px;">
+						<input formControlName="nombre" id="nombre" class="input100" type="text" placeholder="Nombre completo">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
+						<input class="input100" type="text" name="email" placeholder="Correo">
+						<span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
+						<input class="input100" type="text" name="email" placeholder="Municipio">
+						<span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
+						<input class="input100" type="text" name="email" placeholder="Estado">
+						<span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
+						<input class="input100" type="text" name="email" placeholder="Codigo postal">
+						<span class="focus-input100"></span>
+          </div>
+
+					<div class="container-contact100-form-btn">
+						<button class="contact100-form-btn">
+							Enviar
+						</button>
+					</div>
+        </form>
+      </div>
+
+      <!-- Form with header -->
+
+
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-lg-7">
+
+      <!--Google map-->
+      <div id="map-container-section" class="z-depth-1-half map-container-section mb-4" style="height: 750px; width: 1230px;">
+
+      </div>
+      <!-- Buttons-->
+
+    </div>
+    <!-- Grid column -->
+
+  </div>
+  <!-- Grid row -->
+
+</section>
+<!-- Section: Contact v.1 -->
+

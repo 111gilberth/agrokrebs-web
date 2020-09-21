@@ -19,6 +19,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ModalVideoComponent } from '../commons/modal-video/modal-video.component';
+import { FormCreditComponent } from '../commons/form-credit/form-credit.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ModalVideoComponent } from '../commons/modal-video/modal-video.componen
     ProductosComponent,
     VideosComponent,
     FooterComponent,
-    ModalVideoComponent
+    ModalVideoComponent,
+    FormCreditComponent
   ],
   imports: [
     BrowserModule,

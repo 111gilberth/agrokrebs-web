@@ -1,102 +1,95 @@
-<div class="container">
-<div class="row">
-    <div class="col-6">
-      <img src="#">
+<!-- Section: Contact v.1 -->
+<section class="my-5">
+
+  <!-- Section heading -->
+  <h2 class="h1-responsive  text-center my-5 font-body">Contactános</h2>
+  <!-- Section description -->
+  <h3 class="font-body text-center w-responsive mx-auto pb-5">Envianos un comentario en el caso de querer información acerca de nuestros productos... ¿dudas?... ¿sugerencias?, por favor contáctanos,
+    estamos para escucharte.</h3>
+
+  <!-- Grid row -->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-lg-5 mb-lg-0 mb-4">
+
+      <!-- Form with header -->
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="wrap-input100 validate-input" data-validate="Please enter your name" style="max-width: 750px;">
+            <input formControlName="nombre" id="nombre"  class="input100" type="text" placeholder="Nombre completo">
+              <span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
+            <input formControlName="correo" id="correo" class="input100" type="text" placeholder="Correo">
+              <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
+						<select class="select100"  formControlName="idMunicipio" id="idMunicipio" placeholder="Municipio" style="flex-basis: auto">
+              <option *ngFor="let idMunicipio of municipios" [value]="idMunicipio"  selected>{{idMunicipio}}</option>
+            </select>
+              <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
+						<select class="select100" formControlName="idEstado" id="idEstado" placeholder="Estado">
+              <option *ngFor="let idEstado of estados" [value]="idEstado"  selected>{{idEstado}}</option>
+            </select>
+              <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
+						<input class="input100" type="text" formControlName="cp" id="cp"  placeholder="Codigo postal">
+              <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
+						<select class="select100" type="text" formControlName="requestType" id="requestType" placeholder="Tipo de ayuda">
+              <option *ngFor="let requestType of requestTypes" [value]="requestType" selected>{{requestType}}</option>
+            </select>
+              <span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Please enter your message" style="max-width: 750px;">
+						<textarea class="input100" formControlName="mensaje" id="mensaje"  placeholder="Escribe tu mensaje"></textarea>
+              <span class="focus-input100"></span>
+					</div>
+
+
+					<div class="container-contact100-form-btn">
+						<button class="contact100-form-btn">
+							Enviar
+						</button>
+					</div>
+        </form>
+
+
+      <!-- Form with header -->
+
+
     </div>
-                    <div class="col-6">
-                          <!-- Material form contact -->
-                                      <mdb-card>
+    <!-- Grid column -->
 
-                                            <mdb-card-header class="info-color white-text text-center py-4">
-                                              <h5>
-                                                <strong>Contact us</strong>
-                                              </h5>
-                                            </mdb-card-header>
+    <!-- Grid column -->
+    <div class="col-lg-7">
 
-                                            <mdb-card-body class="px-lg-5 pt-0">
+      <!--Google map-->
+      <div id="map-container-section" class="z-depth-1-half map-container-section mb-4" style="height: 400px">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.751194088798!2d-96.94993968468846!3d18.898115862449597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4e557c8872711%3A0x6c38a45d6d90ddaa!2sAgroKrebs!5e0!3m2!1ses-419!2smx!4v1600700595352!5m2!1ses-419!2smx" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+        </iframe>
+      </div>
+      <!-- Buttons-->
+      <div class="row text-center">
+      <h3 class="font-body">Conoce nuestra ubicación.</h3>
+      </div>
 
-                                                   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="text-center" style="color: #757575;">
-                                                                    <!--<input formControlName="id" class="form-control" type="hidden" />-->
-                                                        <div class="md-form mt-3">
-                                                              <label class="col-sm-6 col-form-label"><h4>Nombre</h4></label>
-                                                              <input formControlName="nombre" id="nombre" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }"/>
-                                                                 <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
-                                                                    <div *ngIf="f.nombre.errors.required">Es requerido llenar el nombre</div>
-                                                                  </div>
-                                                        </div>
-                                                        <div class="md-form">
-                                                              <label class="col-sm-6 col-form-label"><h4>Correo</h4></label>
-                                                              <input formControlName="correo" id="correo" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.correo.errors }"/>
-                                                                <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
-                                                                   <div *ngIf="f.correo.errors.required">Es requerido llenar el correo</div>
-                                                                </div>
-                                                         </div>
-
-                                                          <div class="row">
-                                                              <label class="col-sm-6 col-form-label"><h4>Municipio</h4></label>
-                                                              <mdb-select formControlName="idMunicipio" id="idMunicipio" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.idMunicipio.errors }">
-                                                                  <option *ngFor="let idMunicipio of municipios" [value]="idMunicipio"  selected>{{idMunicipio}}</option>
-                                                              </mdb-select>
-                                                              <div *ngIf="submitted && f.idMunicipio.errors" class="invalid-feedback">
-                                                                  <div *ngIf="f.idMunicipio.errors.required">Es requerido llenar el Municipio</div>
-                                                              </div>
-                                                          </div>
-
-                                                          <div class="row">
-                                                                <label class="col-sm-6 col-form-label"><h4>Estado</h4></label>
-                                                                <mdb-select formControlName="idEstado" class="form-control" id="idEstado" [ngClass]="{ 'is-invalid': submitted && f.idEstado.errors }">
-                                                                   <option *ngFor="let idEstado of estados" [value]="idEstado"  selected>{{idEstado}}</option>
-                                                                </mdb-select>
-                                                                <div *ngIf="submitted && f.idEstado.errors" class="invalid-feedback">
-                                                                    <div *ngIf="f.idEstado.errors.required">Es requerido llenar el Estado</div>
-                                                                </div>
-                                                          </div>
-
-                                                          <div class="row">
-                                                                <label class="col-sm-6 col-form-label"><h4>Código postal</h4></label>
-                                                                <input formControlName="cp" class="form-control" id="cp" [ngClass]="{ 'is-invalid': submitted && f.cp.errors }"/>
-                                                                  <div *ngIf="submitted && f.cp.errors" class="invalid-feedback">
-                                                                    <div *ngIf="f.cp.errors.required">Es requerido llenar el Código postal</div>
-                                                                  </div>
-                                                          </div>
-
-                                                          <div class="row">
-                                                                <label class="col-sm-6 col-form-label"><h4>Tipo de ayuda</h4></label>
-                                                                <mdb-select formControlName="requestType" id="requestType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.requestType.errors }">
-                                                                  <option *ngFor="let requestType of requestTypes" [value]="requestType" selected>{{requestType}}</option>
-                                                                </mdb-select>
-                                                                <div *ngIf="submitted && f.requestType.errors" class="invalid-feedback">
-                                                                  <div *ngIf="f.requestType.errors.required">Es requerido llenar el tipo de contacto</div>
-                                                                </div>
-                                                          </div>
-
-                                                          <div class="md-form">
-                                                                <label class="col-sm-2 col-form-label"><h4>Mensaje</h4></label>
-                                                                <textarea formControlName="mensaje" id="mensaje" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mensaje.errors }"></textarea>
-                                                                  <div *ngIf="submitted && f.mensaje.errors" class="invalid-feedback">
-                                                                    <div *ngIf="f.mensaje.errors.required">Es requerido llenar el Mensaje</div>
-                                                                  </div>
-                                                          </div>
-                                                          <div class="row">
-                                                                  <br />
-                                                                      <div class="form-check">
-                                                                        <mdb-checkbox formControlName="acceptTerms" class="form-check-input" id="acceptTerms"  [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }"></mdb-checkbox>
-                                                                        <label class="form-check-label" for="exampleCheck1">Acepta nuestros términos y condiciones.</label>
-                                                                          <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">
-                                                                            <div *ngIf="f.acceptTerms.errors.required">Necesitas aceptar los términos y condiciones.</div>
-                                                                          </div>
-                                                                      </div>
-                                                          </div>
-                                                                    <br />
-                                                                    <button type="submit" class="btn btn-primary" style="width:100%;width:100%">Enviar comentarios</button>
-                                                                    <br />
-                                                                    <button  mdbBtn color="info" block="true" class="btn btn-secondary" type="reset" (click)="onReset()" style="width:100%; margin-top: 10px;">Cancelar</button>
-                                                                    <br />
-                                                                    <br />
-                                                              </form>
-                                            </mdb-card-body>
-                                      </mdb-card>
-                    </div>
     </div>
-</div>
+    <!-- Grid column -->
 
+  </div>
+  <!-- Grid row -->
+
+</section>
+<!-- Section: Contact v.1 -->

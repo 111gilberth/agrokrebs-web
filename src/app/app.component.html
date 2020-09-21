@@ -1,39 +1,38 @@
 <div style="text-align:center">
+  <nav class="mb-1 navbar  sticky-top navbar-expand-lg navbar-dark default-color">
+    <a class="logo navbar-brand" routerLink="inicio">
+      <strong><b>AGRO</b>&nbsp;KREBS</strong>
+    </a>
 
-    <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [containerInside]="false">
-      <mdb-navbar-brand>
-        <a class="logo navbar-brand" href="#">
-          <strong><b>AGRO</b>&nbsp;KREBS</strong>
+  <links>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active waves-light" mdbWavesEffect>
+        <a class="nav-link"  routerLink="inicio" routerLinkActive="active">Inicio
+          <span class="sr-only">(current)</span>
         </a>
-      </mdb-navbar-brand>
-      <links>
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active waves-light" mdbWavesEffect>
-            <a class="nav-link"  routerLink="inicio" routerLinkActive="active">Inicio
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link"  routerLink="productos">Productos</a>
-          </li>
-          <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link"  routerLink="agrokrebs">Agrokrebs</a>
-          </li>
-          <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link"  routerLink="videos">Videos</a>
-          </li>
-          <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link"  routerLink="galeria">Galeria</a>
-          </li>
-          <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link"   routerLink="contacto">Contacto</a>
-          </li>
-          <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link"   routerLink="credito">Credito</a>
-          </li>
-        </ul>
-      </links>
-    </mdb-navbar>
+      </li>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link"  routerLink="productos">Productos</a>
+      </li>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link"  routerLink="agrokrebs">Agrokrebs</a>
+      </li>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link"  routerLink="videos">Videos</a>
+      </li>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link"  routerLink="galeria">Galeria</a>
+      </li>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link"   routerLink="contacto">Contacto</a>
+      </li>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link"   routerLink="credito">Credito</a>
+      </li>
+    </ul>
+  </links>
+  </nav>
+
 <router-outlet></router-outlet>
 
   <!-- Footer -->
