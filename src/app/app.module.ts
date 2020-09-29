@@ -20,6 +20,34 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ModalVideoComponent } from '../commons/modal-video/modal-video.component';
 import { FormCreditComponent } from '../commons/form-credit/form-credit.component';
+import { HttpClientModule } from '@angular/common/http';
+
+
+// Override JSON.parse for debug purposes
+  (function () {
+      var parse = JSON.parse;
+
+      JSON.parse = function (str) {
+          try {
+              return parse.apply(this, arguments);
+          } catch (e) {
+              console.log('Error parsing', arguments);
+              throw e;
+          }
+      }
+  }());
+
+
+  // Override XMLHttpRequest.open
+  (function() {
+      var origOpen = XMLHttpRequest.prototype.open;
+      XMLHttpRequest.prototype.open = function() {
+          this.addEventListener('load', function() {
+              console.log('Http Response', this.responseText, this);
+          });
+          origOpen.apply(this, arguments);
+      };
+  })();
 
 @NgModule({
   declarations: [
@@ -44,6 +72,7 @@ import { FormCreditComponent } from '../commons/form-credit/form-credit.componen
     ReactiveFormsModule,
     NgbModule,
     MDBBootstrapModule.forRoot(),
+    HttpClientModule,
     BrowserAnimationsModule
   ],
   providers: [],

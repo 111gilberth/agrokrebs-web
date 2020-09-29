@@ -13,41 +13,83 @@
     <!-- Grid column -->
     <div class="col-lg-5 mb-lg-0 mb-4">
 
-      <!-- Form with header -->
-      <div>
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="text-center" style="color: #757575;">
-          <div class="wrap-input100 validate-input" data-validate="Please enter your name" style="max-width: 750px;">
-						<input formControlName="nombre" id="nombre" class="input100" type="text" placeholder="Nombre completo">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
-						<input class="input100" type="text" name="email" placeholder="Correo">
-						<span class="focus-input100"></span>
+     <!-- Form with header -->
+      <form [formGroup]="creditForm" (ngSubmit)="saveCredit(creditForm.value)">
+        <div class="wrap-input100 validate-input" style="max-width: 750px;">
+          <input formControlName="nombre" class="input100" type="text"  [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" placeholder="Nombre completo">
+          <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+            <div *ngIf="f.nombre.errors.required">Es requerido llenar el nombre</div>
           </div>
+        </div>
 
-          <div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
-						<input class="input100" type="text" name="email" placeholder="Municipio">
-						<span class="focus-input100"></span>
+        <div class="wrap-input100 validate-input" style="max-width: 750px;">
+          <input formControlName="correo"  class="input100" type="text" [ngClass]="{ 'is-invalid': submitted && f.correo.errors }" placeholder="Correo">
+          <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
+            <div *ngIf="f.correo.errors.required">Es requerido llenar el correo</div>
+         </div>
+        </div>
+
+        <div class="wrap-input100 validate-input" style="max-width: 750px;">
+          <select class="select100"  formControlName="municipio" [ngClass]="{ 'is-invalid': submitted && f.municipio.errors }" placeholder="Municipio" style="flex-basis: auto">
+            <option *ngFor="let municipio of municipios" [value]="municipio"  selected>{{municipio}}</option>
+          </select>
+          <div *ngIf="submitted && f.municipio.errors" class="invalid-feedback">
+            <div *ngIf="f.municipio.errors.required">Es requerido llenar el Municipio</div>
+        </div>
+        </div>
+
+        <div class="wrap-input100 validate-input" style="max-width: 750px;">
+          <select class="select100" formControlName="estado"  [ngClass]="{ 'is-invalid': submitted && f.estado.errors }" placeholder="Estado">
+            <option *ngFor="let estado of estados" [value]="estado"  selected>{{estado}}</option>
+          </select>
+          <div *ngIf="submitted && f.estado.errors" class="invalid-feedback">
+            <div *ngIf="f.estado.errors.required">Es requerido llenar el Estado</div>
+        </div>
+        </div>
+
+        <div class="wrap-input100 validate-input"style="max-width: 750px;">
+          <input class="input100" type="text" formControlName="cp"  [ngClass]="{ 'is-invalid': submitted && f.cp.errors }"  placeholder="Codigo postal">
+          <div *ngIf="submitted && f.cp.errors" class="invalid-feedback">
+            <div *ngIf="f.cp.errors.required">Es requerido llenar el Código postal</div>
           </div>
+        </div>
 
-          <div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
-						<input class="input100" type="text" name="email" placeholder="Estado">
-						<span class="focus-input100"></span>
+      <!--  <div class="wrap-input100 validate-input" style="max-width: 750px;">
+          <select class="select100" type="text" formControlName="requestType" placeholder="Tipo de ayuda">
+            <option *ngFor="let requestType of requestTypes" [value]="requestType" selected>{{requestType}}</option>
+          </select>
+          <div *ngIf="submitted && f.requestType.errors" class="invalid-feedback">
+            <div *ngIf="f.requestType.errors.required">Es requerido llenar el tipo de contacto</div>
           </div>
-
-          <div class="wrap-input100 validate-input" data-validate = "Please enter email: e@a.x" style="max-width: 750px;">
-						<input class="input100" type="text" name="email" placeholder="Codigo postal">
-						<span class="focus-input100"></span>
-          </div>
-
-					<div class="container-contact100-form-btn">
-						<button class="contact100-form-btn">
-							Enviar
-						</button>
-					</div>
-        </form>
-      </div>
+        </div>-->
+      <!--
+        <div class="row">
+          <br />
+              <div class="form-check" style="margin-left: 75px;">
+                <mdb-checkbox formControlName="acceptTerm" class="form-check-input"  [ngClass]="{ 'is-invalid': submitted && f.acceptTerm.errors }"></mdb-checkbox>
+                <label class="form-check-label" for="exampleCheck1">Acepta nuestros términos y condiciones.</label>
+                  <div *ngIf="submitted && f.acceptTerm.errors" class="invalid-feedback">
+                    <div *ngIf="f.acceptTerm.errors.required">Necesitas aceptar los términos y condiciones.</div>
+                  </div>
+              </div>
+        </div>-->
+        <br />
+        <br />
+        <div class="wrap-input100 validate-input">
+          <center>
+            <button class="contact100-form-btn" type="reset" (click)="onReset()" style="width:50%;">
+              Cancelar
+            </button>
+          </center>
+        </div>
+        <div class="wrap-input100 validate-input">
+          <center>
+            <button class="contact100-form-btn" type="submit" style="width:50%; margin-top: 10px;">
+              Enviar
+            </button>
+          </center>
+        </div>
+      </form>
 
       <!-- Form with header -->
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { CreditServiceService } from '../../app/services/credit.service.service';
 
 @Component({
   selector: 'app-form-credit',
@@ -7,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./form-credit.component.scss']
 })
 export class FormCreditComponent implements OnInit {
-  contactForm: FormGroup
+  creditForm: FormGroup
   submitted = false;
   municipios = ['Acajete','Acatlán','Acayucan','Actopan','Acula','Acultzingo','Camarón de Tejeda','Alpatláhuac','Alto Lucero de Gutiérrez Barrios','Altotonga','Alvarado','Amatitlán',
   'Naranjos Amatlán','Amatlán de los Reyes','Angel R. Cabada','La Antigua','Apazapan','Aquila','Astacinga','Atlahuilco','Atoyac','Atzacan','Atzalan','Tlaltetela','Ayahualulco',
@@ -21,35 +22,48 @@ export class FormCreditComponent implements OnInit {
   'Jalisco','México','Michoacán de Ocampo','Morelos','Nayarit','Nuevo León','Manlio Fabio Altamirano','Oaxaca','Puebla','Querétaro','Quintana Roo','San Luis Potosí','Sinaloa','Sonora',
   'Tabasco','Tamaulipas','Tlaxcala','Veracruz de Ignacio de la Llave','Yucatán','Zacatecas']
 
-  constructor( private formBuilder: FormBuilder ) { }
+  constructor( private formBuilder: FormBuilder,
+               private creditServiceService: CreditServiceService ) { }
 
   public ngOnInit(): void {
-      this.contactForm = this.formBuilder.group({
+      this.creditForm = this.formBuilder.group({
         //id: ['', Validators.required],
-        nombre: ['', [Validators.required, Validators.minLength(4)]],
-        correo: ['', [Validators.required, Validators.email]],
-        idMunicipio: ['', Validators.required],
-        idEstado: ['', Validators.required],
-        cp: ['', Validators.required],
-        acceptTerms: [false, Validators.requiredTrue]
+        nombre: ['Nombre', [Validators.required, Validators.minLength(4)]],
+        correo: ['nombre@test.mx', [Validators.required, Validators.email]],
+        municipio: ['Cordoba', Validators.required],
+        estado: ['Veracruz', Validators.required],
+        cp: ['94000', Validators.required],
+        //acceptTerms: [false, Validators.requiredTrue]
     });
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.contactForm.controls; }
+  get f() { return this.creditForm.controls; }
 
     // Submit Registration Form
-    onSubmit() {
-      this.submitted = true;
-      if(this.contactForm.invalid){
-        return;
-      }
-      console.log(JSON.stringify(this.contactForm.value));
+  //  onSubmit() {
+    //  this.submitted = true;
+     // if(this.contactForm.invalid){
+       // return;
+      //}
+      //console.log(JSON.stringify(this.contactForm.value));
       //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.contactForm.value));
-  }
+  //}
 
+    saveCredit(values){
+      const creditData = new FormData();
+      creditData.append("nombre", this.creditForm.get('nombre').value);
+      creditData.append("correo", this.creditForm.get('correo').value);
+      creditData.append("municipio", this.creditForm.get('municipio').value);
+      creditData.append("estado", this.creditForm.get('estado').value);
+      creditData.append("cp", this.creditForm.get('cp').value);
+      this.creditServiceService.createCredit(creditData).subscribe(result =>{
+        console.log(result);
+      })
+
+    }
     onReset(){
       this.submitted = false;
-      this.contactForm.reset();
+      this.creditForm.reset();
   }
 }
